@@ -5,7 +5,7 @@ class App {
     Scanner carRental = new Scanner(System.in);
 
     System.out.println(
-        "Pickup Date, Would you like Toll tag for $3.95/day?, Would you like a gps for $2.95/day?, Would you like roadside assistance for $3.95/day?, Customers Age, Number of days for rental:");
+        "Pickup Date (ex: 05/24/22), Would you like Toll tag for $3.95/day? (yes/no), Would you like a gps for $2.95/day? (yes/no), Would you like roadside assistance for $3.95/day? (yes/no), Customers Age, How many days will you need the rental?");
 
     String pickUpDate = carRental.nextLine();
     String tollTag = carRental.nextLine();
