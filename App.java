@@ -3,20 +3,20 @@ import java.util.Scanner;
 class App {
   public static void main(String args[]) {
 
-    double totalToll = checkToll(tollResponse(), lengthResponse());
-    double totalGps = checkGps(gpsResponse(), lengthResponse());
-    double totalRoadside = checkRoadside(roadsideResponse(), lengthResponse());
-    double totalSurcharge = surchargeCalculated(AgeResponse(), lengthResponse());
-    double totalOptions = optionsCalculated(totalToll, totalGps, totalRoadside);
-    double totalBase = getBaseRental(lengthResponse());
-    System.out.println("The rental starts on " + dateReponse());
-    System.out.println("Basic Rent fee: $" + String.format("%.2f", totalBase));
-    System.out.println("Options cost: $" + String.format("%.2f", totalOptions));
-    System.out.println("Under age surcharge: $" + String.format("%.2f",
-        totalSurcharge));
-    System.out.println(
-        "The total rental cost is: $" + String.format("%.2f",
-            getRentalTotal(totalBase, totalOptions, totalSurcharge)));
+    System.out.println(dateReponse());
+    System.out.println(tollResponse());
+    System.out.println(gpsResponse());
+    System.out.println(roadsideResponse());
+    System.out.println(AgeResponse());
+    System.out.println(lengthResponse());
+    // System.out.println("The rental starts on " + dateReponse());
+    // System.out.println("Basic Rent fee: $" + String.format("%.2f", totalBase));
+    // System.out.println("Options cost: $" + String.format("%.2f", totalOptions));
+    // System.out.println("Under age surcharge: $" + String.format("%.2f",
+    // totalSurcharge));
+    // System.out.println(
+    // "The total rental cost is: $" + String.format("%.2f",
+    // getRentalTotal(totalBase, totalOptions, totalSurcharge)));
 
   }
 
@@ -58,9 +58,8 @@ class App {
   }
 
   public static double dailyBase = 29.99;
-  public static double dailyToll = 3.95;
+  public static double dailyTollAndRoadside = 3.95;
   public static double dailyGps = 2.95;
-  public static double dailyRoadside = 3.95;
   public static double ageSurcharge = 0.3;
 
   public static double getBaseRental(int days) {
@@ -72,33 +71,33 @@ class App {
     return tollAndGps += roadside;
   }
 
-  public static double checkToll(String toll, int days) {
+  public static double checkToll(String toll) {
     if (toll.equalsIgnoreCase("no")) {
       return 0.00;
     } else {
-      return dailyToll * days;
+      return dailyTollAndRoadside * 1;
     }
   }
 
-  public static double checkGps(String gps, int days) {
+  public static double checkGps(String gps) {
     if (gps.equalsIgnoreCase("no")) {
       return 0.00;
     } else {
-      return dailyGps * days;
+      return dailyGps * 1;
     }
   }
 
-  public static double checkRoadside(String roadside, int days) {
+  public static double checkRoadside(String roadside) {
     if (roadside.equalsIgnoreCase("no")) {
       return 0.00;
     } else {
-      return dailyRoadside * days;
+      return dailyTollAndRoadside * 1;
     }
   }
 
-  public static double surchargeCalculated(int age, int days) {
+  public static double surchargeCalculated(int age) {
     if (age < 25) {
-      double baseCharge = days * dailyBase;
+      double baseCharge = 1 * dailyBase;
       return baseCharge * ageSurcharge;
     } else {
       return 0.00;
